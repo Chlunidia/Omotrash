@@ -37,14 +37,20 @@ class _TrashScreenState extends State<TrashScreen> {
     'https://img.freepik.com/free-vector/illustration-with-people-cleaning-beach_23-2148437841.jpg?w=1060&t=st=1674918310~exp=1674918910~hmac=e97204bb59d6354bd32a382f3a3c2e57dc724614f4f8fea29e65fab539aa6df8'
   ];
   final Location _location2 = Location();
+  @override
+  void dispose() {
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     _location2.getLocation().then((value) {
-      setState(() {
-        _latitude = value.latitude!;
-        _longitude = value.longitude!;
-      });
+      if (mounted) {
+        setState(() {
+          _latitude = value.latitude!;
+          _longitude = value.longitude!;
+        });
+      }
     });
     return WillPopScope(
       onWillPop: () async => false,
@@ -143,13 +149,15 @@ class _TrashScreenState extends State<TrashScreen> {
                         size: 18,
                       ),
                       enabledBorder: OutlineInputBorder(
-                        borderSide: const BorderSide(color: kSecondColor, width: 2),
+                        borderSide:
+                            const BorderSide(color: kSecondColor, width: 2),
                         borderRadius: BorderRadius.circular(10),
                       ),
                       floatingLabelStyle:
                           const TextStyle(color: kSecondColor, fontSize: 18),
                       focusedBorder: OutlineInputBorder(
-                        borderSide: const BorderSide(color: kSecondColor, width: 1.5),
+                        borderSide:
+                            const BorderSide(color: kSecondColor, width: 1.5),
                         borderRadius: BorderRadius.circular(10),
                       ),
                     ),
@@ -184,13 +192,15 @@ class _TrashScreenState extends State<TrashScreen> {
                         size: 18,
                       ),
                       enabledBorder: OutlineInputBorder(
-                        borderSide: const BorderSide(color: kSecondColor, width: 2),
+                        borderSide:
+                            const BorderSide(color: kSecondColor, width: 2),
                         borderRadius: BorderRadius.circular(10),
                       ),
                       floatingLabelStyle:
                           const TextStyle(color: kSecondColor, fontSize: 18),
                       focusedBorder: OutlineInputBorder(
-                        borderSide: const BorderSide(color: kSecondColor, width: 1.5),
+                        borderSide:
+                            const BorderSide(color: kSecondColor, width: 1.5),
                         borderRadius: BorderRadius.circular(10),
                       ),
                     ),
@@ -301,7 +311,9 @@ class _TrashScreenState extends State<TrashScreen> {
                             ),
                           ),
                         ),
-                        const SizedBox(height: 5,),
+                        const SizedBox(
+                          height: 5,
+                        ),
                         GestureDetector(
                           onTap: () {
                             selectedItem = 'Plastic';
@@ -382,13 +394,15 @@ class _TrashScreenState extends State<TrashScreen> {
                         size: 18,
                       ),
                       enabledBorder: OutlineInputBorder(
-                        borderSide: const BorderSide(color: kSecondColor, width: 2),
+                        borderSide:
+                            const BorderSide(color: kSecondColor, width: 2),
                         borderRadius: BorderRadius.circular(10),
                       ),
                       floatingLabelStyle:
                           const TextStyle(color: kSecondColor, fontSize: 18),
                       focusedBorder: OutlineInputBorder(
-                        borderSide: const BorderSide(color: kSecondColor, width: 1.5),
+                        borderSide:
+                            const BorderSide(color: kSecondColor, width: 1.5),
                         borderRadius: BorderRadius.circular(10),
                       ),
                     ),
@@ -423,13 +437,15 @@ class _TrashScreenState extends State<TrashScreen> {
                         size: 18,
                       ),
                       enabledBorder: OutlineInputBorder(
-                        borderSide: const BorderSide(color: kSecondColor, width: 2),
+                        borderSide:
+                            const BorderSide(color: kSecondColor, width: 2),
                         borderRadius: BorderRadius.circular(10),
                       ),
                       floatingLabelStyle:
                           const TextStyle(color: kSecondColor, fontSize: 18),
                       focusedBorder: OutlineInputBorder(
-                        borderSide: const BorderSide(color: kSecondColor, width: 1.5),
+                        borderSide:
+                            const BorderSide(color: kSecondColor, width: 1.5),
                         borderRadius: BorderRadius.circular(10),
                       ),
                     ),
@@ -464,13 +480,15 @@ class _TrashScreenState extends State<TrashScreen> {
                         size: 18,
                       ),
                       enabledBorder: OutlineInputBorder(
-                        borderSide: const BorderSide(color: kSecondColor, width: 2),
+                        borderSide:
+                            const BorderSide(color: kSecondColor, width: 2),
                         borderRadius: BorderRadius.circular(10),
                       ),
                       floatingLabelStyle:
                           const TextStyle(color: kSecondColor, fontSize: 18),
                       focusedBorder: OutlineInputBorder(
-                        borderSide: const BorderSide(color: kSecondColor, width: 1.5),
+                        borderSide:
+                            const BorderSide(color: kSecondColor, width: 1.5),
                         borderRadius: BorderRadius.circular(10),
                       ),
                     ),
@@ -505,13 +523,15 @@ class _TrashScreenState extends State<TrashScreen> {
                         size: 18,
                       ),
                       enabledBorder: OutlineInputBorder(
-                        borderSide: const BorderSide(color: kSecondColor, width: 2),
+                        borderSide:
+                            const BorderSide(color: kSecondColor, width: 2),
                         borderRadius: BorderRadius.circular(10),
                       ),
                       floatingLabelStyle:
                           const TextStyle(color: kSecondColor, fontSize: 18),
                       focusedBorder: OutlineInputBorder(
-                        borderSide: const BorderSide(color: kSecondColor, width: 1.5),
+                        borderSide:
+                            const BorderSide(color: kSecondColor, width: 1.5),
                         borderRadius: BorderRadius.circular(10),
                       ),
                     ),
@@ -576,12 +596,14 @@ class _TrashScreenState extends State<TrashScreen> {
                         });
                         Get.snackbar('Success', 'Data saved successfully',
                             snackPosition: SnackPosition.TOP,
-                            backgroundColor: const Color.fromARGB(123, 33, 149, 243));
+                            backgroundColor:
+                                const Color.fromARGB(123, 33, 149, 243));
                         Get.offAll(const HomeScreen());
                       }
                     },
                     height: 45,
-                    padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 50),
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 10, horizontal: 50),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10),
                     ),
